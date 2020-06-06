@@ -1,0 +1,24 @@
+﻿@model Pessoa
+@{
+    ViewData["Title"] = "Confirmar Exclusão";
+}
+
+<h3 class="page-header">Confirma a exclusão da pessoa de código: @Model.Id e nome: @Model.Nome</h3>
+
+<div>
+    @using (Html.BeginForm("Deletar", "Pessoa", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+        @Html.HiddenFor(x => x.Nome)
+        @Html.HiddenFor(x => x.Email)
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+                @Html.ActionLink("Cancelar", "Index", "Home", new { @class = "btn btn-default" })
+            </div>
+        </div>
+
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Pessoa>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3 class="page-header">Listagem de Pessoas</h3>
+
+<a class="btn btn-info" href="/Evento/Index" style="float: right; margin-bottom: 12px; color: #FFF; ">Eventos</a>
+
+<a class="btn btn-info" href="/Pessoa/Nova" style="float: right; margin-bottom: 12px; color: #FFF; margin-right: 10px;">Cadastrar nova pessoa</a>
+
+@if (!string.IsNullOrEmpty(ViewBag.Mensagem))
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Sucesso!</strong>  @ViewBag.Mensagem
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Nome</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Pessoa/Editar/@item.Id" style="color: #FFF;">Editar</a>
+                        <a class="btn btn-danger" href="/Pessoa/ConfirmarExclusao/@item.Id" style="color: #FFF;">Excluir</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="odd">
+                <td valign="top" colspan="6">
+                    Nenhum registro encontrado
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

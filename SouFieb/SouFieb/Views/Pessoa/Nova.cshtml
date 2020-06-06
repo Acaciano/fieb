@@ -1,0 +1,34 @@
+﻿@model Pessoa
+@{
+    ViewData["Title"] = "Cadastrar Nova Pessoa";
+}
+
+<h3 class="page-header">Cadastro de uma Nova Pessoa</h3>
+
+<div>
+    @using (Html.BeginForm("Cadastrar", "Pessoa", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="nome">Nome</label>
+                @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", id = "nome", placeholder = "Digite seu nome" })
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="email">E-mail</label>
+                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", id = "email", placeholder = "Digite seu e-mail" })
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                @Html.ActionLink("Voltar","Index", "Home" , new { @class = "btn btn-default" } )
+            </div>
+        </div>
+
+    }
+</div>

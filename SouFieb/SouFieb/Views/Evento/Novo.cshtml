@@ -1,0 +1,39 @@
+﻿@model Evento
+@{
+    ViewData["Title"] = "Cadastrar Novo Evento";
+}
+
+<h3 class="page-header">Cadastro de uma Novo Evento</h3>
+
+<div>
+    @using (Html.BeginForm("Cadastrar", "Evento", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label for="nome">Nome</label>
+            @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", id = "nome", placeholder = "Digite o nome do evento" })
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="descricao">Descrição</label>
+            @Html.TextBoxFor(x => x.Descricao, new { @class = "form-control", id = "descricao", placeholder = "Digite a descrição" })
+        </div>
+
+        <div class="form-group col-md-4">
+            <label for="descricao">Foto</label>
+            @Html.TextBoxFor(x => x.Foto, new { @class = "form-control", id = "descricao", placeholder = "Digite o endereço da foto" })
+        </div>
+    </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                @Html.ActionLink("Voltar","Index", "Home" , new { @class = "btn btn-default" } )
+            </div>
+        </div>
+
+    }
+</div>
